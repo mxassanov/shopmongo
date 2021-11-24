@@ -3,10 +3,9 @@ const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
 const cors = require('cors')
 const { routes } = require('./src/routes')
+require('dotenv').config()
 
-mongoose.connect(
-    'mongodb://127.0.0.1:27017/mevnshop', { useUnifiedTopology: true }
-)
+mongoose.connect('mongodb://127.0.0.1:27017/mevnshop')
 
 const app = express()
 app.use(cors({
@@ -20,5 +19,4 @@ routes.forEach(route => {
 })
 
 const PORT = 3000
-app.listen(PORT)
-console.log(`server is running at ${PORT}`)
+app.listen(PORT, () => console.log(`server is running at ${PORT}`))
